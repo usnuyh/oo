@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ㅇㅇ</title>
+    <style>
+      .time {
+        font-size: 12px;
+        color: gray;
+        margin-left: 5px;
+      }
+      #dynamic-text {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+      }
+      #user-input {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dynamic-text"><br>안녕하세요　</div>
+    <input type="text" id="user-input" placeholder="뻘글을 한 번 적어보세요" autofocus>
+    <script>
+      const dynamicText = document.getElementById('dynamic-text');
+      const userInput = document.getElementById('user-input');
+      userInput.addEventListener('keydown', function(event) {
+        if (event.keyCode === 13 && userInput.value) {
+          const now = new Date();
+          const timeStr = '(' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + ')';
+          dynamicText.innerHTML += '<br>ㄴ ' + userInput.value + ' ' + '<span class="time">' + timeStr + '</span>';
+          userInput.value = '';
+        }
+      });
+    </script>
+  </body>
+</html>
+
